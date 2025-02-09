@@ -1,4 +1,19 @@
 class Toacc {
+	/**
+	 * Initializes the Toacc instance with default and user-provided options.
+	 *
+	 * @param {Object} [options={}] - Optional configuration object.
+	 * @param {string} [options.position="top-right"] - The position of the toast container.
+	 * @param {number} [options.duration=4000] - The duration before the toast closes automatically.
+	 * @param {boolean} [options.auto_close=true] - Whether the toast should close automatically.
+	 * @param {boolean} [options.use_icons=true] - Whether to use icons in the toast.
+	 * @param {boolean} [options.close_button=false] - Whether to include a close button in the toast.
+	 * @param {boolean} [options.stopOnHover=false] - Whether to stop the auto-close on hover.
+	 * @param {string|null} [options.custom_class=null] - Custom classes to add to the toast.
+	 * @param {string|null} [options.custom_bg_color=null] - Custom background color for the toast.
+	 * @param {string|null} [options.custom_icon=null] - Custom icon classes for the toast.
+	 * @param {Function|null} [options.onClick=null] - Callback function for click events on the toast.
+	 */
 	constructor(options = {}) {
 		this.options = {
 			position: "top-right",
@@ -21,14 +36,21 @@ class Toacc {
 	}
 
 	/**
-	 * Show the toast
-	 * @param message       		The toast message
-	 * @param type          		The toast type (info, success, warning, error)
-	 * @param duration      		The toast duration before closing (don't work if the auto_close option is disabled)
-	 * @param custom_classes  	Add extra classes, separated by spaces
-	 * @param custom_bg_color  	Override the standard background color
-	 * @param custom_icon  			Override the standard icon, add classes of font-awesome icon
-	 * @param onClick  					Add and onClick function
+	 * Shows a toast with the given options.
+	 *
+	 * @param {Object} [param_toast_options={}] - Optional configuration object.
+	 * @param {string} [param_toast_options.message=""] - The message to display in the toast.
+	 * @param {string} [param_toast_options.type="info"] - The type of the toast (info, success, warning, error).
+	 * @param {string} [param_toast_options.position] - The position of the toast container.
+	 * @param {number} [param_toast_options.duration] - The duration before the toast closes automatically.
+	 * @param {boolean} [param_toast_options.auto_close] - Whether the toast should close automatically.
+	 * @param {boolean} [param_toast_options.use_icons] - Whether to use icons in the toast.
+	 * @param {boolean} [param_toast_options.close_button] - Whether to include a close button in the toast.
+	 * @param {boolean} [param_toast_options.stopOnHover] - Whether to stop the auto-close on hover.
+	 * @param {string|null} [param_toast_options.custom_class] - Custom classes to add to the toast.
+	 * @param {string|null} [param_toast_options.custom_bg_color] - Custom background color for the toast.
+	 * @param {string|null} [param_toast_options.custom_icon] - Custom icon classes for the toast.
+	 * @param {Function|null} [param_toast_options.onClick] - Callback function for click events on the toast.
 	 */
 	show(param_toast_options = {}) {
 		const toast_options = {
@@ -59,12 +81,22 @@ class Toacc {
 		}
 	}
 
+	/**
+	 * A static method to create a new Toacc instance and show a toast.
+	 * This is a shorthand for creating a new instance of Toacc and calling the show method on it.
+	 *
+	 * @param {Object} param_toast_options - See the Toacc.show method for options.
+	 * @example
+	 * Toacc.show({message: "Hello World!"});
+	 */
 	static show() {
 		return new Toacc().show(...arguments);
 	}
 
 	/**
-	 * Create the Toacc container for the toasts
+	 * Create the container for the toast messages
+	 * @param {string} position - The position of the toast container
+	 * @private
 	 */
 	_createContainer(position) {
 		this.container = document.createElement("div");
@@ -74,13 +106,19 @@ class Toacc {
 	}
 
 	/**
-	 * Show the toast
-	 * @param message       		The toast message
-	 * @param type          		The toast type (info, success, warning, error)
-	 * @param custom_classes  	Add extra classes, separated by spaces
-	 * @param custom_bg_color  	Override the standard background color
-	 * @param custom_icon  			Override the standard icon, add classes of font-awesome icon
-	 * @param onClick  					Add and onClick function
+	 * Creates a toast message with the given options.
+	 *
+	 * @param {string} message - The message to display in the toast.
+	 * @param {string} type - The type of the toast. Can be "info", "success", "warning", or "error".
+	 * @param {string} position - The position of the toast. Can be "top-left", "top-center", "top-right", "center-left", "center", or "center-right".
+	 * @param {boolean} use_icons - Whether to use icons in the toast.
+	 * @param {boolean} close_button - Whether to include a close button in the toast.
+	 * @param {string|null} custom_class - Custom classes to add to the toast.
+	 * @param {string|null} custom_bg_color - Custom background color for the toast.
+	 * @param {string|null} custom_icon - Custom icon classes for the toast.
+	 * @param {Function|null} onClick - Callback function for click events on the toast.
+	 * @returns {HTMLElement} The created toast element.
+	 * @private
 	 */
 	_createToast(message, type, position, use_icons, close_button, custom_class, custom_bg_color, custom_icon, onClick) {
 		// Create the container if not exists
@@ -170,8 +208,10 @@ class Toacc {
 	}
 
 	/**
-	 * Remove the toast
-	 * @param toast 	The toast element
+	 * Removes a toast from the container
+	 *
+	 * @param {HTMLElement} toast - The toast element to remove
+	 * @private
 	 */
 	_removeToast(toast) {
 		toast.style.opacity = "0";
@@ -185,9 +225,14 @@ class Toacc {
 	}
 
 	/**
-	 * Auto close the toast after a duration
-	 * @param toast      The toast element
-	 * @param duration		The duration
+	 * Automatically closes a toast after a given duration.
+	 * If the toast has a close button, it will be cleared when the button is clicked.
+	 * If stopOnHover is true, the auto-close will be stopped when the user hovers the toast and resumed when the user leaves the toast.
+	 *
+	 * @param {HTMLElement} toast - The toast element to auto-close
+	 * @param {number} duration - The duration in milliseconds before the toast closes automatically
+	 * @param {boolean} stopOnHover - Whether to stop the auto-close when the user hovers the toast
+	 * @private
 	 */
 	_autoClose(toast, duration, stopOnHover) {
 		let timeout = setTimeout(() => {
