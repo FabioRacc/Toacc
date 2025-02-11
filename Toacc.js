@@ -38,8 +38,8 @@ class Toacc {
 	/**
 	 * Shows a toast with the given options.
 	 *
+	 * @param {string} message - The message to display in the toast.
 	 * @param {Object} [param_toast_options={}] - Optional configuration object.
-	 * @param {string} [param_toast_options.message=""] - The message to display in the toast.
 	 * @param {string} [param_toast_options.type="info"] - The type of the toast (info, success, warning, error).
 	 * @param {string} [param_toast_options.position] - The position of the toast container.
 	 * @param {number} [param_toast_options.duration] - The duration before the toast closes automatically.
@@ -52,9 +52,8 @@ class Toacc {
 	 * @param {string|null} [param_toast_options.custom_icon] - Custom icon classes for the toast.
 	 * @param {Function|null} [param_toast_options.onClick] - Callback function for click events on the toast.
 	 */
-	show(param_toast_options = {}) {
+	show(message, param_toast_options = {}) {
 		const toast_options = {
-			message: "",
 			type: "info",
 			position: this.options.position,
 			duration: this.options.duration,
@@ -70,7 +69,7 @@ class Toacc {
 		};
 
 		const animation_duration = 600;
-		const toast = this._createToast(toast_options.message, toast_options.type, toast_options.position, toast_options.use_icons, toast_options.close_button, this.stopOnHover, toast_options.custom_class, toast_options.custom_bg_color, toast_options.custom_icon, toast_options.onClick);
+		const toast = this._createToast(message, toast_options.type, toast_options.position, toast_options.use_icons, toast_options.close_button, this.stopOnHover, toast_options.custom_class, toast_options.custom_bg_color, toast_options.custom_icon, toast_options.onClick);
 
 		// Add the toast to the container
 		this.container.appendChild(toast);
