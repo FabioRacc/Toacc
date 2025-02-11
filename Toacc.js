@@ -98,10 +98,15 @@ class Toacc {
 	 * @private
 	 */
 	_createContainer(position) {
-		this.container = document.createElement("div");
-		this.container.classList.add(this.classes.container, position);
+		const container = document.querySelector(`.${this.classes.container}`);
+		if (container) {
+			this.container = container;
+		} else {
+			this.container = document.createElement("div");
+			this.container.classList.add(this.classes.container, position);
 
-		document.body.appendChild(this.container);
+			document.body.appendChild(this.container);
+		}
 	}
 
 	/**
