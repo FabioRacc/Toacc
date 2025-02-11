@@ -263,3 +263,5 @@ class Toacc {
 		}
 	}
 }
+
+export default Toacc;
