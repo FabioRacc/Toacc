@@ -56,8 +56,8 @@ const toast = new Toacc({
 ### Showing a Toast
 
 ```javascript
-toast.show({
-	message: "This is a success message!",
+toast.show(message: "This is a success message!",
+{
 	type: "success",
 });
 ```
@@ -65,8 +65,8 @@ toast.show({
 ### Using the Static Method
 If you need to show only one toast you can use the static method.
 ```javascript
-Toacc.show({
-	message: "Hello, world!",
+Toacc.show(message: "Hello, world!",
+{
 	type: "info",
 	duration: 3000,
 });
@@ -88,11 +88,11 @@ The `Toacc` constructor accepts an options object:
 | `custom_icon` | string | null | Custom icon classes (FontAwesome, Material Icons, etc.). |
 | `onClick` | function | null | Callback function executed when the toast is clicked. |
 
-The `Toacc` show method accepts an options object with all previous options that override constructor options, in addition to two further options:
+The `Toacc` show method accepts an options object with all previous options that override constructor options, in addition the type option:
 | Option | Type | Default | Description |
 |--------|------|---------|-------------|
 | `type` | string | "info" | Toast type defines the color and icon (`info`, `success`, `warning`, `error`). |
-| `message` | string |  | The message of the toast, can be HTML. |
+
 
 ## License
 
