@@ -13,7 +13,7 @@ Toacc is a lightweight and customizable JavaScript library for displaying toast 
 
 ## Installation
 
-Toacc is a standalone JavaScript library expect for FontAwesome for the icon.
+Toacc is a standalone JavaScript library expect for Font Awesome for the icon.
 You can include it in your project by downloading the script or linking it directly.
 
 ### Manual Download
@@ -30,6 +30,8 @@ You can include it in your project by downloading the script or linking it direc
 ```html
 <link  rel="stylesheet" type="text/css" src="path/to/toacc.min.css">
 ```
+
+4. If you want to use Icons include Font Awesome (Version 6)
 
 ## Usage
 
@@ -78,7 +80,7 @@ The `Toacc` constructor accepts an options object:
 | `position` | string | "top-right" | The position of the toast (`top-left`, `top-center`, `top-right`, `center-left`, `center`, `center-right`, `bottom-left`, `bottom-center`, `bottom-right`). |
 | `duration` | number | 4000 | Duration before the toast closes automatically (in ms). |
 | `auto_close` | boolean | true | Whether the toast should close automatically. |
-| `use_icons` | boolean | true | Whether to use icons in the toast. |
+| `use_icons` | boolean | false | Whether to use icons in the toast. |
 | `close_button` | boolean | false | Whether to include a close button. |
 | `stopOnHover` | boolean | false | Stops auto-close on hover. |
 | `custom_class` | string | null | Custom CSS class for styling. |

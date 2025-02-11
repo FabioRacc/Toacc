@@ -19,7 +19,7 @@ class Toacc {
 			position: "top-right",
 			duration: 4000,
 			auto_close: true,
-			use_icons: true,
+			use_icons: false,
 			close_button: false,
 			stopOnHover: false,
 			custom_class: null,
