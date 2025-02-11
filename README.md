@@ -56,7 +56,7 @@ const toast = new Toacc({
 ### Showing a Toast
 
 ```javascript
-toast.show(message: "This is a success message!",
+toast.show("This is a success message!",
 {
 	type: "success",
 });
@@ -65,7 +65,7 @@ toast.show(message: "This is a success message!",
 ### Using the Static Method
 If you need to show only one toast you can use the static method.
 ```javascript
-Toacc.show(message: "Hello, world!",
+Toacc.show("Hello, world!",
 {
 	type: "info",
 	duration: 3000,
