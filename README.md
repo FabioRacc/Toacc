@@ -13,7 +13,7 @@ Toacc is a lightweight and customizable JavaScript library for displaying toast 
 
 ## Installation
 
-Toacc is a standalone JavaScript library expect for Font Awesome for the icon.
+Toacc is a standalone JavaScript library expect for **Font Awesome** for the default icon.
 You can include it in your project by downloading the script or linking it directly.
 
 ### Manual Download
@@ -85,7 +85,7 @@ The `Toacc` constructor accepts an options object:
 | `stopOnHover` | boolean | false | Stops auto-close on hover. |
 | `custom_class` | string | null | Custom CSS class for styling. |
 | `custom_bg_color` | string | null | Custom background color. |
-| `custom_icon` | string | null | Custom icon classes (FontAwesome, Material Icons, etc.). |
+| `custom_icon` | string | null | Your custom icon, you can use HTML |
 | `onClick` | function | null | Callback function executed when the toast is clicked. |
 
 The `Toacc` show method accepts an options object with all previous options that override constructor options, in addition the type option:

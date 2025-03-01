@@ -11,7 +11,7 @@ class Toacc {
 	 * @param {boolean} [options.stopOnHover=false] - Whether to stop the auto-close on hover.
 	 * @param {string|null} [options.custom_class=null] - Custom classes to add to the toast.
 	 * @param {string|null} [options.custom_bg_color=null] - Custom background color for the toast.
-	 * @param {string|null} [options.custom_icon=null] - Custom icon classes for the toast.
+	 * @param {string|null} [options.custom_icon=null] - Custom icon for the toast.
 	 * @param {Function|null} [options.onClick=null] - Callback function for click events on the toast.
 	 */
 	constructor(options = {}) {
@@ -119,7 +119,7 @@ class Toacc {
 	 * @param {boolean} close_button - Whether to include a close button in the toast.
 	 * @param {string|null} custom_class - Custom classes to add to the toast.
 	 * @param {string|null} custom_bg_color - Custom background color for the toast.
-	 * @param {string|null} custom_icon - Custom icon classes for the toast.
+	 * @param {string|null} custom_icon - Custom icon for the toast.
 	 * @param {Function|null} onClick - Callback function for click events on the toast.
 	 * @returns {HTMLElement} The created toast element.
 	 * @private
@@ -150,28 +150,28 @@ class Toacc {
 			const icon = document.createElement("span");
 			icon.className = "toacc__toast__icon";
 
-			const fa_icon = document.createElement("i");
+			let fa_icon;
 			if (custom_icon) {
-				fa_icon.className = custom_icon;
+				fa_icon = custom_icon;
 			} else {
 				switch (type) {
 					case "info":
 					default:
-						fa_icon.classList.add("fa-solid", "fa-info");
+						fa_icon = '<i class="fa-solid fa-info"></i>'
 						break;
 					case "success":
-						fa_icon.classList.add("fa-solid", "fa-check");
+						fa_icon = '<i class="fa-solid fa-check"></i>'
 						break;
 					case "warning":
-						fa_icon.classList.add("fa-solid", "fa-exclamation");
+						fa_icon = '<i class="fa-solid fa-exclamation"></i>'
 						break;
 					case "error":
-						fa_icon.classList.add("fa-solid", "fa-xmark");
+						fa_icon = '<i class="fa-solid fa-xmark"></i>'
 						break;
 				}
 			}
 
-			icon.appendChild(fa_icon);
+			icon.innerHTML = fa_icon;
 			toast.appendChild(icon);
 		}
 
